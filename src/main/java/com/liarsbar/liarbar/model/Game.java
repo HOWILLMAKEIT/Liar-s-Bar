@@ -1,9 +1,5 @@
-package com.liarsbar.liarbar.server;
-import org.springframework.stereotype.Service;
+package com.liarsbar.liarbar.model;
 
-import com.liarsbar.liarbar.model.Card;
-import com.liarsbar.liarbar.model.GameState;
-import com.liarsbar.liarbar.model.Player;
 import java.util.Random;
 import java.util.List;
 
