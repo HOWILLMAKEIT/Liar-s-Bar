@@ -1,25 +1,16 @@
 package com.liarsbar.liarbar.server;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
-import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
-import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
+import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 @Configuration
-@EnableWebSocket
-public class WebConfig implements WebSocketConfigurer {
+public class WebConfig {
 
-    private final WebHandler webHandler;
-
-    // 通过构造函数注入 WebServer
-    public WebConfig(WebHandler webHandler) {
-        this.webHandler = webHandler;
-    }
-
-    @Override
-    public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        // 注册 WebSocket 端点 /gamepage，使用 webServer 作为处理器
-        registry.addHandler(webHandler, "/ws")
-                .setAllowedOrigins("*");  // 设置允许的来源
+    // Bean 用来扫描 @ServerEndpoint 注解的 WebSocket 端点
+    @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
     }
 }
