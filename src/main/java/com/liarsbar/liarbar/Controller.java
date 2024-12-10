@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @org.springframework.stereotype.Controller
 public class Controller {
 
-    @RequestMapping("/gamepage")
-    public String test() {
-        return "game";
-    }
+//    @RequestMapping("/gamepage")
+//    public String test() {
+//        return "game";
+//    }
 
     // 显示静态的 game.html 页面
     @GetMapping("/gamepage")

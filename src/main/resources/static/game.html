@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liar's Bar</title>
-    <link rel="stylesheet" href="GameRoomStyle.css">
+    <link rel="stylesheet" href="CSS/basic.css">
+    <link rel="stylesheet" href="CSS/effects.css">
+    <link rel="stylesheet" href="CSS/deck.css">
 </head>
 <body>
 <div class="game-container">
@@ -21,6 +23,20 @@
     <div class="player bottom">
         自己
     </div>
+<!--    牌堆，主要是展示作用-->
+    <div class="Cards">
+        <div class="Card">Deck</div>
+        <div class="Card">Card 2</div>
+        <div class="Card">Card 3</div>
+        <div class="Card">Card 4</div>
+        <div class="Card">Card 5</div>
+        <div class="Card">Card 6</div>
+        <div class="Card">Card 7</div>
+        <div class="Card">Card 8</div>
+        <div class="Card">Card 9</div>
+        <div class="Card">Card 10</div>
+    </div>
+<!--    玩家面前的牌-->
     <div class="cards bottom">
         <div class="card" onclick="moveUp(this)">卡片 1</div>
         <div class="card" onclick="moveUp(this)">卡片 2</div>
@@ -28,37 +44,18 @@
         <div class="card" onclick="moveUp(this)">卡片 4</div>
         <div class="card" onclick="moveUp(this)">卡片 5</div>
     </div>
-<!--        <div class="player-info">玩家 4 (自己)</div>-->
     <div class="buttons">
         <button class="play-btn">出牌</button>
         <button class="doubt-btn">质疑</button>
     </div>
+    <!-- 左轮手枪 -->
+<!--    <div class="gun-container">-->
+<!--        <img src="path/to/revolver.png" alt="左轮手枪" class="revolver">-->
+<!--    </div>-->
 </div>
-<script>
-    function moveUp(card) {
-        card.classList.toggle('move-up');  // 切换 "move-up" 类
-    }
 
-    // 可以根据需要添加按钮的点击事件
-    document.querySelector('.play-btn').addEventListener('click', function() {
-        alert("出牌按钮被点击");
-    });
 
-    document.querySelector('.doubt-btn').addEventListener('click', function() {
-        alert("质疑按钮被点击");
-    });
-</script>
-<script>
-    let ws = new WebSocket("ws://localhost:8080/game");
-    ws.onmessage = function(event) {
-
-    };
-    ws.onclose = function(event){
-
-    };
-    ws.onopen = function(event){
-
-    };
-</script>
+<script src="Client.js"></script>
+<script src="WbClient.js"></script>
 </body>
 </html>

@@ -1,0 +1,37 @@
+.Cards {
+    position: absolute;
+    bottom: 60%; /* 卡片位于底部玩家上方 */
+    left: 60%; /* 相对于容器水平居中 */
+    transform: translateX(-50%); /* 平移以实现居中 */
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 中心对齐 */
+    margin-top: 10px;
+}
+
+.Card {
+    width: 60px;
+    height: 80px;
+    background-color: #4caf50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    position: absolute; /* 设置为绝对定位 */
+    transition: all 0.2s; /* 添加过渡效果 */
+}
+
+/* 为每张卡片设置不同的位置 */
+.Card:nth-child(1) { z-index: 10; transform: translateY(0) rotate(0deg); }
+.Card:nth-child(2) { z-index: 9; transform: translateY(5px) rotate(3deg); }
+.Card:nth-child(3) { z-index: 8; transform: translateY(10px) rotate(6deg); }
+.Card:nth-child(4) { z-index: 7; transform: translateY(15px) rotate(9deg); }
+.Card:nth-child(5) { z-index: 6; transform: translateY(20px) rotate(12deg); }
+.Card:nth-child(6) { z-index: 5; transform: translateY(25px) rotate(15deg); }
+.Card:nth-child(7) { z-index: 4; transform: translateY(30px) rotate(18deg); }
+.Card:nth-child(8) { z-index: 3; transform: translateY(35px) rotate(21deg); }
+.Card:nth-child(9) { z-index: 2; transform: translateY(40px) rotate(24deg); }
+.Card:nth-child(10) { z-index: 1; transform: translateY(45px) rotate(27deg); }
