@@ -1,0 +1,116 @@
+/* 整体布局 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    width: 120vw;
+    height: 110vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 玩家区域布局 */
+.player {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #8bc34a;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 玩家位置 */
+.top-left {
+    top: 40%;
+    left: 5%;
+}
+
+.top {
+    top: 5%;
+}
+
+.top-right {
+    top: 40%;
+    right: 5%;
+}
+
+.bottom {
+    bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 玩家按钮样式 */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top:699px;
+    margin-left: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* 卡片区域 */
+.cards {
+    position: absolute;
+    bottom: 22%; /* 卡片位于底部玩家上方 */
+    display: flex;
+    justify-content: center;
+    flex-direction: row; // 水平排列
+    gap: 10px;
+    margin-top: 10px;
+    gap: 10px;  //间距
+}
+
+.card {
+    width: 60px;
+    height: 80px;
+    background-color: #4caf50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+}
+/* 点击卡片时触发的上升效果 */
+.card.move-up {
+    transform: translateY(-21px) scale(1.05);  /* 卡片上升 60px 并稍微放大 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* 卡片上升时添加阴影效果 */
+}
+
+/*!* 玩家信息 *!*/
+/*.player-info {*/
+/*    font-size: 18px;*/
+/*    margin-bottom: 10px;*/
+/*}*/

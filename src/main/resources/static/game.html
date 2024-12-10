@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liar's Bar</title>
+    <link rel="stylesheet" href="GameRoomStyle.css">
+</head>
+<body>
+<div class="game-container">
+    <!-- 玩家区域 -->
+    <div class="player top-left">
+        玩家 1
+    </div>
+    <div class="player top">
+        玩家 2
+    </div>
+    <div class="player top-right">
+        玩家 3
+    </div>
+    <div class="player bottom">
+        自己
+    </div>
+    <div class="cards bottom">
+        <div class="card" onclick="moveUp(this)">卡片 1</div>
+        <div class="card" onclick="moveUp(this)">卡片 2</div>
+        <div class="card" onclick="moveUp(this)">卡片 3</div>
+        <div class="card" onclick="moveUp(this)">卡片 4</div>
+        <div class="card" onclick="moveUp(this)">卡片 5</div>
+    </div>
+<!--        <div class="player-info">玩家 4 (自己)</div>-->
+    <div class="buttons">
+        <button class="play-btn">出牌</button>
+        <button class="doubt-btn">质疑</button>
+    </div>
+</div>
+<script>
+    function moveUp(card) {
+        card.classList.toggle('move-up');  // 切换 "move-up" 类
+    }
+
+    // 可以根据需要添加按钮的点击事件
+    document.querySelector('.play-btn').addEventListener('click', function() {
+        alert("出牌按钮被点击");
+    });
+
+    document.querySelector('.doubt-btn').addEventListener('click', function() {
+        alert("质疑按钮被点击");
+    });
+</script>
+<script>
+    let ws = new WebSocket("ws://localhost:8080/game");
+    ws.onmessage = function(event) {
+
+    };
+    ws.onclose = function(event){
+
+    };
+    ws.onopen = function(event){
+
+    };
+</script>
+</body>
+</html>
