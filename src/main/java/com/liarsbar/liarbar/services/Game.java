@@ -1,4 +1,8 @@
-package com.liarsbar.liarbar.model;
+package com.liarsbar.liarbar.services;
+
+import com.liarsbar.liarbar.model.Card;
+import com.liarsbar.liarbar.model.GameState;
+import com.liarsbar.liarbar.model.Player;
 
 import java.util.Random;
 import java.util.List;
@@ -30,6 +34,7 @@ public class Game {
         gameState.nextPlayer();
         return player.getName() + " declared " + cards.size() + " cards.";
     }
+    public GameState getGameState() {return gameState;}
     //玩家选择质疑
     public String challenge(Player player) {
         for(Card card: card_on_table){

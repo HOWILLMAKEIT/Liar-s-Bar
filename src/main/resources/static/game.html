@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="CSS/basic.css">
     <link rel="stylesheet" href="CSS/effects.css">
     <link rel="stylesheet" href="CSS/deck.css">
+    <link rel="stylesheet" href="CSS/CurrentCard.css">
 </head>
 <body>
 <div class="game-container">
@@ -37,13 +38,20 @@
         <div class="Card">Card 10</div>
     </div>
 <!--    玩家面前的牌-->
-    <div class="cards bottom">
-        <div class="card" onclick="moveUp(this)">卡片 1</div>
-        <div class="card" onclick="moveUp(this)">卡片 2</div>
-        <div class="card" onclick="moveUp(this)">卡片 3</div>
-        <div class="card" onclick="moveUp(this)">卡片 4</div>
-        <div class="card" onclick="moveUp(this)">卡片 5</div>
+<!--    卡片容器-->
+    <div class="cards bottom" id="player-cards">
+<!--        单一卡片-->
+        <!-- 通过 JavaScript 动态插入 -->
     </div>
+
+
+    <div class="currentCard" id="current-card-container">
+        <div id="current-card" class="card-placeholder">
+            <!-- 初始状态显示 -->
+            <span id="card-content">?</span>
+        </div>
+    </div>
+
     <div class="buttons">
         <button class="play-btn">出牌</button>
         <button class="doubt-btn">质疑</button>

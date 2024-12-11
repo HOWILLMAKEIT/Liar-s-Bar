@@ -1,0 +1,33 @@
+/* 中央卡片区域样式 */
+.currentCard {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px; /* 缩小宽度 */
+    height: 100px; /* 缩小高度 */
+    background-color: white;
+    border: 2px solid #4caf50; /* 缩小边框粗细 */
+    border-radius: 5px; /* 缩小圆角 */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); /* 调整阴影大小 */
+}
+
+
+/* 卡片占位样式 */
+.card-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #888;
+    font-weight: bold;
+}
+
+/* 卡片内容样式 */
+#card-content {
+    font-size: 36px;
+    color: #333;
+}

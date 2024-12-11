@@ -1,4 +1,3 @@
-
 /* 点击卡片时触发的上升效果 */
 .card.move-up {
     transform: translateY(-21px) scale(1.05);  /* 卡片上升 60px 并稍微放大 */
@@ -6,3 +5,4 @@
 }
 
 
+g

@@ -75,22 +75,18 @@ button {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #45a049;
-}
-
-/* 卡片区域 */
+/*卡片容器*/
 .cards {
     position: absolute;
     bottom: 22%; /* 卡片位于底部玩家上方 */
     display: flex;
     justify-content: center;
-    flex-direction: row; // 水平排列
+    flex-direction: row; /* 水平排列 */
     gap: 10px;
     margin-top: 10px;
-    gap: 10px;  //间距
 }
 
+/*单一卡片*/
 .card {
     width: 60px;
     height: 80px;
@@ -102,4 +98,11 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     font-size: 14px;
+    cursor: pointer;  /* 鼠标悬停时显示为可点击 */
+    transition: transform 0.2s;  /* 添加平滑过渡 */
 }
+
+.card:hover {
+    transform: scale(1.1);  /* 鼠标悬停时卡片放大 */
+}
+
