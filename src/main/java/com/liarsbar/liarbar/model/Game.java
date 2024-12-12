@@ -1,8 +1,4 @@
-package com.liarsbar.liarbar.services;
-
-import com.liarsbar.liarbar.model.Card;
-import com.liarsbar.liarbar.model.GameState;
-import com.liarsbar.liarbar.model.Player;
+package com.liarsbar.liarbar.model;
 
 import java.util.Random;
 import java.util.List;

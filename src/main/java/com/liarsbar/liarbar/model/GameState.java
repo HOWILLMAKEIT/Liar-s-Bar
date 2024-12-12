@@ -40,6 +40,10 @@ public class GameState {
     public Card getCurrentCard() {
         return currentCard;
     }
+    // 获取当前玩家
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
     // 判定是否为当前出牌者
     public boolean isCurrentPlayer(Player player) {
         return currentPlayer.equals(player);

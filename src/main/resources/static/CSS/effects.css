@@ -4,5 +4,17 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  /* 卡片上升时添加阴影效果 */
 }
 
+/* 高亮样式 */
+.highlight {
+    background: linear-gradient(135deg, rgba(255, 255, 0, 0.3), rgba(255, 0, 0, 0.3));
+    color: #d9534f;
+    border: 2px solid #d9534f;
+    box-shadow: 0 0 10px rgba(217, 53, 69, 0.5), 0 0 20px rgba(217, 53, 69, 0.2);
+    transition: all 0.3s ease-in-out;
+}
 
-g
+.highlight:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(217, 53, 69, 0.7), 0 0 30px rgba(217, 53, 69, 0.3);
+}
+

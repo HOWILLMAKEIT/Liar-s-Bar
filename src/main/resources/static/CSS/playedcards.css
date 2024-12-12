@@ -1,0 +1,13 @@
+
+/* 控制打出卡牌的样式 */
+.playedcards {
+    position: absolute;  /* 使用绝对定位来放置打出卡牌 */
+    top: 50%;  /* 控制容器的垂直位置，确保在手牌上方 */
+    left: 50%;  /* 将容器水平居中，可以根据需求调整 */
+    transform: translateX(-50%);  /* 居中容器 */
+    display: flex;  /* 启用 flexbox 布局 */
+    justify-content: flex-start;  /* 水平排列卡牌，左对齐 */
+    align-items: center;  /* 垂直居中卡牌 */
+    gap: 10px;  /* 卡牌之间的间距，调整为你想要的值 */
+    z-index: 10;  /* 确保容器位于其他内容之上 */
+}

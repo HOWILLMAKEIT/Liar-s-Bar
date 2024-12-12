@@ -1,9 +1,8 @@
-package com.liarsbar.liarbar;
+package com.liarsbar.liarbar.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @org.springframework.stereotype.Controller
-public class Controller {
+public class MainController {
 //    @RequestMapping("/gamepage")
 //    public String test() {
 //        return "game";

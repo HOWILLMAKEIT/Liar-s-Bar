@@ -8,23 +8,25 @@
     <link rel="stylesheet" href="CSS/effects.css">
     <link rel="stylesheet" href="CSS/deck.css">
     <link rel="stylesheet" href="CSS/CurrentCard.css">
+    <link rel="stylesheet" href="CSS/playedcards.css">
 </head>
 <body>
 <div class="game-container">
     <!-- 玩家区域 -->
-    <div class="player top-left">
+    <div class="player top-left" data-player-id="player1_session_id">
         玩家 1
     </div>
-    <div class="player top">
+    <div class="player top" data-player-id="player2_session_id">
         玩家 2
     </div>
-    <div class="player top-right">
+    <div class="player top-right" data-player-id="player3_session_id">
         玩家 3
     </div>
-    <div class="player bottom">
+    <div class="player bottom" data-player-id="player4_session_id">
         自己
     </div>
-<!--    牌堆，主要是展示作用-->
+
+    <!--    牌堆，主要是展示作用-->
     <div class="Cards">
         <div class="Card">Deck</div>
         <div class="Card">Card 2</div>
@@ -52,9 +54,14 @@
         </div>
     </div>
 
+    <!-- 操作按钮区域 -->
     <div class="buttons">
-        <button class="play-btn">出牌</button>
-        <button class="doubt-btn">质疑</button>
+        <button class="play-btn" onclick="playCard()">出牌</button>
+        <button class="doubt-btn" onclick="doubtCard()">质疑</button>
+    </div>
+
+    <div class="playedcards" id="playedcards">
+        <!-- 打出的卡牌将放在这里 -->
     </div>
     <!-- 左轮手枪 -->
 <!--    <div class="gun-container">-->

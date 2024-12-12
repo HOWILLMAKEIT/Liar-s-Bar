@@ -1,4 +1,4 @@
-package com.liarsbar.liarbar.message;
+package com.liarsbar.liarbar.Message.Msg_Server;
 
 import com.liarsbar.liarbar.model.Card;
 
