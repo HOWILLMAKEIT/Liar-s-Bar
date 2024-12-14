@@ -1,5 +1,8 @@
 package com.liarsbar.liarbar.Message.Msg_Server;
 
+import com.liarsbar.liarbar.Message.Message;
+import com.liarsbar.liarbar.Message.MessageType;
+
 import java.util.List;
 
 public class PlayerIds implements Message {

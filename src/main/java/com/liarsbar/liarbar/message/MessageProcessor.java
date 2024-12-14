@@ -2,7 +2,6 @@ package com.liarsbar.liarbar.Message;
 
 import com.alibaba.fastjson2.JSON;
 import com.alibaba.fastjson2.JSONWriter;
-import com.liarsbar.liarbar.Message.Msg_Server.Message;
 
 public class MessageProcessor {
 

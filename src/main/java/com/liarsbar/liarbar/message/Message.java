@@ -1,4 +1,4 @@
-package com.liarsbar.liarbar.Message.Msg_Server;
+package com.liarsbar.liarbar.Message;
 
 public interface Message {
     MessageType getType();
