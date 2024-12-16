@@ -33,8 +33,11 @@ public class HandleMessageService {
         Player ShotPlayer = game.DOUBT(player);// 要开枪射自己的人
         boolean ShotRes = ShotPlayer.shothimself();
         Player PlayerNextRound ;
-        if(player.getisAlive()) PlayerNextRound = player;
+        
+        if(ShotPlayer.getisAlive())PlayerNextRound = ShotPlayer;
+        else if(player.getisAlive()) PlayerNextRound = player;
         else PlayerNextRound = game.getGameState().getlastPlayer();
+
         // 发送消息到前端 1、谁开枪+结果
         for (Player eachPlayer : roomPlayers) {
             Session eachSession = eachPlayer.getSession();
