@@ -6,6 +6,11 @@ import java.util.*;
 public enum Card {
     A, K, Q, KING; //A K Q （6张） KING （2张）
 
+    // 添加一个静态方法来将字符串转换为Card枚举
+    public static Card fromString(String cardStr) {
+        return Card.valueOf(cardStr);
+    }
+
     // 一副牌
     public static List<Card> getDeck() {
         List<Card> deck = new ArrayList<>();

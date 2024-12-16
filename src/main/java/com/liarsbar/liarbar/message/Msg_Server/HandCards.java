@@ -7,7 +7,7 @@ import com.liarsbar.liarbar.model.Card;
 import java.util.List;
 
 
-public class HandCards implements Message {
+public class HandCards extends Message {
     public List<Card> cards;
     public MessageType type = MessageType.HandCard;
 

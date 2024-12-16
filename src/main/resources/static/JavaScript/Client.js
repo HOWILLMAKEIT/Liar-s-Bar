@@ -3,28 +3,36 @@ function moveUp(card) {
 }
 
 const playerElements = {
-    player1: document.querySelector('.player.top-left'),
-    player2: document.querySelector('.player.top'),
-    player3: document.querySelector('.player.top-right'),
-    player4: document.querySelector('.player.bottom')
+    player1: {
+        element: document.querySelector('.player.top-left'),
+        position: 'top-left'
+    },
+    player2: {
+        element: document.querySelector('.player.top'),
+        position: 'top'
+    },
+    player3: {
+        element: document.querySelector('.player.top-right'),
+        position: 'top-right'
+    },
+    player4: {
+        element: document.querySelector('.player.bottom'),
+        position: 'bottom'
+    }
 };
 
 // 出牌按钮实现
-function playCard() {
+function PLAY() {
+    const myPlayerId = playerElements.player4.element.dataset.playerId;
+    if (myPlayerId !== currentId) {
+        alert('还没轮到你出牌！');
+        return;
+    }
     if (selectedCards.length === 0) {
         alert('请先选择卡牌');
         return;
     }
-    // 获取打出卡牌容器
-    const playcardsContainer = document.getElementById('playedcards');
-
     selectedCards.forEach((cardElement, index) => {
-        const playedCardElement = document.createElement('div');
-        playedCardElement.classList.add('card');  // 使用 card 样式
-        // 设置卡牌的内容
-        playedCardElement.innerText = cardElement.innerText;
-        // 将打出的卡牌插入到 playcards 容器中
-        playcardsContainer.appendChild(playedCardElement);
         // 从玩家手牌中移除该卡牌
         cardElement.remove();
     });
@@ -33,5 +41,12 @@ function playCard() {
     selectedCards = [];
 }
 
-
+function DOUBT(){
+    const myPlayerId = playerElements.player4.element.dataset.playerId;
+    if (myPlayerId !== currentId) {
+        alert('还没轮到你！');
+        return;
+    }
+    sendDoubtMsg();
+}
 

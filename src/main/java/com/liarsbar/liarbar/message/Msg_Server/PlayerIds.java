@@ -5,7 +5,7 @@ import com.liarsbar.liarbar.Message.MessageType;
 
 import java.util.List;
 
-public class PlayerIds implements Message {
+public class PlayerIds extends Message {
     public List<String> playerIds;
     public MessageType type = MessageType.PlayerIds;
 

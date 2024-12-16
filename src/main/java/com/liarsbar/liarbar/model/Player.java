@@ -12,6 +12,7 @@ public class Player {
     private boolean isAlive;  // 玩家是否还活着
     private Gun gun;
     private Session session;
+    private String roomId;  // 添加roomId字段
 
     public Player(Session session) {
         this.name = session.getId();
@@ -26,22 +27,17 @@ public class Player {
     public Gun getgun(){
         return this.gun;
     }
-    public void newgun(){
-        this.gun = new Gun(); // 生成一把随机的枪
-    }
-    public void shothimself(){
+
+    public boolean shothimself(){
         // 中弹
         if(this.gun.shot()){
             this.isAlive = false;
+            return true;//中枪
         }
-        else return;
+        else return false;
     }
-    public boolean getisAlive() {
-        return this.isAlive;
-    }
-    // 判断是否有特定手牌
-    public boolean hasCard(Card card) {
-        return hand.contains(card);
+    public void newgun(){
+        this.gun = new Gun(); // 生成一把随机的枪
     }
     public void addCard(Card card){
         hand.add(card);
@@ -50,8 +46,19 @@ public class Player {
     public void removeCard(Card card) {
         hand.remove(card);
     }
-    public String getName(){
-        return name;
+    // set
+    public void setHand(List<Card> cards){
+        this.hand = cards;
+    }
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+    // get
+    public String getRoomId(){
+        return this.roomId;
+    }
+    public boolean getisAlive() {
+        return this.isAlive;
     }
     public List<Card> getHand() {return hand;}
     public Session getSession() {return session;}

@@ -4,7 +4,7 @@ import com.liarsbar.liarbar.Message.Message;
 import com.liarsbar.liarbar.Message.MessageType;
 import com.liarsbar.liarbar.model.Card;
 
-public class CurrentCard implements Message {
+public class CurrentCard extends Message {
     public Card card;
     public MessageType type = MessageType.TheChosenCard;
 

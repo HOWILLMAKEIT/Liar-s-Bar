@@ -1,13 +1,74 @@
+/* 玩家出牌区域的样式 */
+.player-played-cards {
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    min-height: 100px;
+}
 
-/* 控制打出卡牌的样式 */
-.playedcards {
-    position: absolute;  /* 使用绝对定位来放置打出卡牌 */
-    top: 50%;  /* 控制容器的垂直位置，确保在手牌上方 */
-    left: 50%;  /* 将容器水平居中，可以根据需求调整 */
-    transform: translateX(-50%);  /* 居中容器 */
-    display: flex;  /* 启用 flexbox 布局 */
-    justify-content: flex-start;  /* 水平排列卡牌，左对齐 */
-    align-items: center;  /* 垂直居中卡牌 */
-    gap: 10px;  /* 卡牌之间的间距，调整为你想要的值 */
-    z-index: 10;  /* 确保容器位于其他内容之上 */
+/* 上下玩家的牌水平排列 */
+.player-played-cards.top,
+.player-played-cards.bottom {
+    flex-direction: row; /* 水平排列 */
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.player-played-cards.top {
+    top: 30%;
+}
+
+.player-played-cards.bottom {
+    bottom: 40%;
+}
+
+/* 左右玩家的牌竖直排列 */
+.player-played-cards.top-left,
+.player-played-cards.top-right {
+    flex-direction: column; /* 竖直排列 */
+    top: 43%;
+    transform: translateY(-50%);/* 这会将元素的中心点放在容器中间 */
+}
+
+.player-played-cards.top-left {
+    left: 30%;
+}
+
+.player-played-cards.top-right {
+    right: 30%;
+}
+
+/* 左右玩家的牌要横过来 */
+.player-played-cards.top-left .played-card{
+    transform: rotate(90deg); /* 卡牌横过来 */
+}
+.player-played-cards.top-right .played-card {
+    transform: rotate(-90deg); /* 卡牌横过来 */
+}
+
+/* 卡牌基础样式 */
+.played-card {
+    width: 60px;
+    height: 80px;
+    background-color: #4caf50;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+/*悬停效果 */
+.played-card:hover {
+    transform: scale(1.1);
+}
+
+/* 为左右玩家的牌特别处理悬停效果 */
+.player-played-cards.top-left .played-card:hover,
+.player-played-cards.top-right .played-card:hover {
+    transform: rotate(0deg) scale(1.1);
 }

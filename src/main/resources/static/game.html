@@ -40,11 +40,15 @@
         <div class="Card">Card 10</div>
     </div>
 <!--    玩家面前的牌-->
-<!--    卡片容器-->
     <div class="cards bottom" id="player-cards">
 <!--        单一卡片-->
         <!-- 通过 JavaScript 动态插入 -->
     </div>
+    <!-- 在game-container中添加每个玩家的出牌区域 -->
+    <div class="player-played-cards top-left" id="top-left-played-cards"></div>
+    <div class="player-played-cards top" id="top-played-cards"></div>
+    <div class="player-played-cards top-right" id="top-right-played-cards"></div>
+    <div class="player-played-cards bottom" id="bottom-played-cards"></div>
 
 
     <div class="currentCard" id="current-card-container">
@@ -56,13 +60,12 @@
 
     <!-- 操作按钮区域 -->
     <div class="buttons">
-        <button class="play-btn" onclick="playCard()">出牌</button>
-        <button class="doubt-btn" onclick="doubtCard()">质疑</button>
+        <button class="play-btn" onclick="PLAY()">出牌</button>
+        <button class="doubt-btn" onclick="DOUBT()">质疑</button>
     </div>
 
-    <div class="playedcards" id="playedcards">
-        <!-- 打出的卡牌将放在这里 -->
-    </div>
+
+
     <!-- 左轮手枪 -->
 <!--    <div class="gun-container">-->
 <!--        <img src="path/to/revolver.png" alt="左轮手枪" class="revolver">-->

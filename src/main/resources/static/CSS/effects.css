@@ -18,3 +18,8 @@
     box-shadow: 0 0 20px rgba(217, 53, 69, 0.7), 0 0 30px rgba(217, 53, 69, 0.3);
 }
 
+/*灰色头像*/
+.eliminated {
+    filter: grayscale(100%); /* 将图标变为灰色 */
+    opacity: 0.5; /* 可选：减少透明度 */
+}
