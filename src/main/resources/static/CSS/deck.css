@@ -1,8 +1,7 @@
 .Cards {
     position: absolute;
-    bottom: 60%; /* 卡片位于底部玩家上方 */
+    top: 39%; /* 卡片位于底部玩家上方 */
     left: 60%; /* 相对于容器水平居中 */
-    transform: translateX(-50%); /* 平移以实现居中 */
     display: flex;
     flex-direction: column; /* 垂直排列 */
     align-items: center; /* 中心对齐 */

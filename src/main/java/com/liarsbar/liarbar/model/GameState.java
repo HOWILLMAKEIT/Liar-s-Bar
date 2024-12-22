@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 
 public class GameState {
@@ -19,6 +20,7 @@ public class GameState {
         // 发牌
         dealCards(players,  5);
     }
+
     // 发牌函数
     public void dealCards(List<Player> players,  int cardsPerPlayer) {
         // 获取并打乱卡牌
@@ -45,7 +47,7 @@ public class GameState {
             currentPlayer = players.get(nextPlayerIndex);
         }
     }
-
+    //新回合
     public void NewRound(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
         this.card_on_table = new ArrayList<>();
@@ -56,6 +58,7 @@ public class GameState {
         int index = random.nextInt(Cards.length);
         this.currentCard = Cards[index];
     }
+
     // set
     public void setCard_on_table(List<Card> card_on_table) {
         this.card_on_table = card_on_table;
@@ -70,11 +73,11 @@ public class GameState {
         }
         return players.get(lastPlayerIndex);
     }
-    // 获取当前卡牌
+    // 当前卡牌
     public Card getCurrentCard() {
         return currentCard;
     }
-    // 获取当前玩家
+    // 当前玩家
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
@@ -83,6 +86,11 @@ public class GameState {
     }
     public List<Player> getPlayers(){
         return players;
+    }
+    public int getAliveCount() {
+        return (int) players.stream()
+                .filter(Player::getisAlive)
+                .count();
     }
 }
 

@@ -16,8 +16,6 @@ public class Game {
         //初始化游戏状态：
         this.gameState = new GameState(players,Cards[index]);
     }
-
-
     // 玩家选择出牌
     public void PLAY(Player player, List<Card> cards) {
         // 遍历cards列表，丢弃每张牌
@@ -29,9 +27,7 @@ public class Game {
         //下一个玩家
         gameState.nextPlayer();
     }
-
     //玩家选择质疑
-    // 返回需要开枪的玩家
     public Player DOUBT(Player player) {
 
         for(Card card: this.gameState.getCard_on_table()){
@@ -46,5 +42,7 @@ public class Game {
         System.out.printf("质疑失败!");
         return player;
     }
+
+
     public GameState getGameState() {return gameState;}
 }

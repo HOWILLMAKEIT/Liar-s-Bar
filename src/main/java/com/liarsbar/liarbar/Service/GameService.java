@@ -1,11 +1,9 @@
 package com.liarsbar.liarbar.Service;
 
 
-import com.alibaba.fastjson2.JSON;
 import com.liarsbar.liarbar.Message.Message;
 import com.liarsbar.liarbar.Message.MessageProcessor;
-import com.liarsbar.liarbar.Message.MessageType;
-import com.liarsbar.liarbar.Message.Msg_Client.PlayCard;
+import com.liarsbar.liarbar.Message.Msg_Client.PLAY;
 import com.liarsbar.liarbar.model.Card;
 import com.liarsbar.liarbar.model.Game;
 import com.liarsbar.liarbar.model.Player;
@@ -87,14 +85,20 @@ public class GameService {
             Message baseMessage = processor.deserialize(messageJson);
             switch (baseMessage.getType()) {
                 case PLAY:
-                    PlayCard playCard = (PlayCard) baseMessage;
+                    PLAY playCard = (PLAY) baseMessage;
                     handleMessageService.HandlePLAY(game,player,playCard.getCards(), roomPlayers,playCard);
                     break;
                 case DOUBT:
                     //后端处理
                     Player PlayerNextRound = handleMessageService.HandleDOUBT(game,player, roomPlayers);
                     //发送消息到前端
-                    NewRound(roomPlayers,PlayerNextRound,game);
+                    if(game.getGameState().getAliveCount() != 0) NewRound(roomPlayers,PlayerNextRound,game);
+                    break;
+                case GAMEOVER:
+                    //后端处理
+                    handleMessageService.HandleGAMEOVER(game,player, roomPlayers);
+                    // 重开游戏
+                    startGame(player.getRoomId());
                     break;
                 default:
                     System.err.println("Unknown message type: " + baseMessage.getType());

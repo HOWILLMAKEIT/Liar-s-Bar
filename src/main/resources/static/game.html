@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="CSS/deck.css">
     <link rel="stylesheet" href="CSS/CurrentCard.css">
     <link rel="stylesheet" href="CSS/playedcards.css">
+    <link rel="stylesheet" href="CSS/revolver.css">
+
 </head>
 <body>
 <div class="game-container">
@@ -64,12 +66,29 @@
         <button class="doubt-btn" onclick="DOUBT()">质疑</button>
     </div>
 
+    <div class="remaining-players">
+        <span>剩余玩家: </span>
+        <span id="player-count">4</span>
+    </div>
 
 
     <!-- 左轮手枪 -->
-<!--    <div class="gun-container">-->
-<!--        <img src="path/to/revolver.png" alt="左轮手枪" class="revolver">-->
-<!--    </div>-->
+    <!-- 在game-container中添加 -->
+    <div id="revolver-container" class="revolver-container">
+        <svg id="revolver" viewBox="0 0 100 100" class="revolver">
+            <!-- 枪管 -->
+            <rect x="50" y="45" width="40" height="10" fill="#444"/>
+            <!-- 弹筒 -->
+            <circle cx="40" cy="50" r="15" fill="#666"/>
+            <!-- 握把 -->
+            <path d="M20,50 l-5,30 h10 l-5,-30" fill="#333"/>
+            <!-- 扳机 -->
+            <rect x="25" y="50" width="5" height="10" fill="#222"/>
+        </svg>
+    </div>
+
+
+
 </div>
 
 

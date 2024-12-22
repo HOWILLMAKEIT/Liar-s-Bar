@@ -3,8 +3,8 @@ package com.liarsbar.liarbar.Message;
 import com.alibaba.fastjson2.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.liarsbar.liarbar.Message.Msg_Client.Doubt;
-import com.liarsbar.liarbar.Message.Msg_Client.PlayCard;
+import com.liarsbar.liarbar.Message.Msg_Client.DOUBT;
+import com.liarsbar.liarbar.Message.Msg_Client.PLAY;
 
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.NAME,
@@ -13,10 +13,9 @@ import com.liarsbar.liarbar.Message.Msg_Client.PlayCard;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = PlayCard.class, name = "PLAY"),
-        @JsonSubTypes.Type(value = Doubt.class, name = "DOUBT"),
-
-        // ... 其他类型
+        @JsonSubTypes.Type(value = PLAY.class, name = "PLAY"),
+        @JsonSubTypes.Type(value = DOUBT.class, name = "DOUBT"),
+        @JsonSubTypes.Type(value = DOUBT.class, name = "GAMEOVER"),
 })
 public abstract class Message {
     @JSONField(name = "type")

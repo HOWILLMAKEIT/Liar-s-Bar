@@ -9,7 +9,9 @@ public enum MessageType {
     PlayedCard("played-card"),
     PLAY("play"),
     DOUBT("doubt"),
+    GAMEOVER("game-over"),
     SHOT("shot");
+
     private final String value;
 
     MessageType(String value) {

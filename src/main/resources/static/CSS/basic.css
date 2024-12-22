@@ -105,4 +105,21 @@ button {
 .card:hover {
     transform: scale(1.1);  /* 鼠标悬停时卡片放大 */
 }
+.remaining-players {
+    position: fixed;
+    top: 10px;     /* 距离顶部的距离 */
+    left: 10px;    /* 距离左侧的距离 */
+    padding: 10px;
+    background-color: #74f109;
+    border-radius: 5px;
+    font-size: 25px;
+}
+/* 玩家出牌区域的样式 */
+.player-played-cards {
+    position: absolute;
+    display: flex;
+    gap: 5px;
+    min-height: 100px;
+}
+
 

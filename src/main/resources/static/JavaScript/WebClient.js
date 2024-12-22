@@ -2,8 +2,7 @@
 var websocket = null;
 var currentId = null;
 let selectedCards = []; // 存储选中的卡牌元素
-
-
+let remainingPlayers = 4; // 在全局声明剩余玩家数
 
 
 //判断当前浏览器是否支持WebSocket
@@ -68,15 +67,23 @@ function handlePlayerId(playerId) {
     }
 }
 function handlePlayerIds(playerIds) {
+    // 重置
+    remainingPlayers = 4;
+    // 清除所有玩家的eliminated状态
+    Object.values(playerElements).forEach(({element}) => {
+        if (element) {
+            element.classList.remove( 'eliminated');
+        }
+    });
+
+
     // 确保 playerIds 是有效数组，并且长度为 4
     if (!Array.isArray(playerIds) || playerIds.length !== 4) {
         console.error("收到的玩家 ID 数据无效:", playerIds);
         return;
     }
-
 // 获取当前玩家的 ID（player4，即自己）
     const currentPlayerId = playerElements.player4.element.dataset.playerId;
-
 // 查找当前玩家的位置（index）
     const currentPlayerIndex = playerIds.indexOf(currentPlayerId);
 
@@ -84,14 +91,12 @@ function handlePlayerIds(playerIds) {
         console.error("未找到当前玩家的 ID");
         return;
     }
-
 // 清空所有玩家的 ID
     Object.values(playerElements).forEach(({element}) => {
         if (element && element.dataset) {
             element.dataset.playerId = '';
         }
     });
-
 // 计算玩家位置
     const positions = {
         [(currentPlayerIndex + 1) % 4]: 'player1', // 左侧第一个玩家
@@ -136,6 +141,7 @@ function handleCurrentCard(card) {
 function handleHandCards(cards) {
     const cardsContainer = document.getElementById('player-cards'); // 获取卡牌容器
     cardsContainer.innerHTML = ''; // 清空现有卡牌
+    selectedCards = [];//清空选中的牌
 
     // 根据收到的卡牌信息更新显示
     cards.forEach(card => {
@@ -166,48 +172,62 @@ function handleCurrentPlayer(playerId) {
             element.classList.remove('highlight');
         }
     });
-// 根据 playerId 找到对应的玩家元素，并添加高亮类
+
+    // 根据 playerId 找到对应的玩家元素，并添加高亮类
     Object.values(playerElements).forEach(({element}) => {
         if (element && element.dataset.playerId === playerId) {
             currentId = playerId;
-            element.classList.add('highlight');  // 给当前玩家添加高亮样式
+            element.classList.add('highlight');
         }
     });
+
+    // 更新手枪指向
+    updateRevolverDirection(playerId);
     console.log(`玩家 ${playerId} 被高亮显示`);
 }
 function handlePlayedCard(cards, id) {
     let playedCardsContainer = null;
-    let isBottomPlayer = false; // 新增：标记是否为底部玩家（自己）
+    let isBottomPlayer = false;
 
-// 根据玩家ID找到对应的出牌区域
+
     Object.values(playerElements).forEach(({element, position}) => {
         if (element.dataset.playerId === id) {
             playedCardsContainer = document.getElementById(`${position}-played-cards`);
-            // 判断是否是底部玩家（自己）
             isBottomPlayer = position === 'bottom';
         }
     });
-
-// 确保找到了出牌区域
-    if (!playedCardsContainer) {
-        console.error('未找到出牌区域');
-        return;
-    }
-// 清空所有玩家的出牌区域
+    // 清空所有玩家的出牌区域
     Object.values(playerElements).forEach(({position}) => {
         const container = document.getElementById(`${position}-played-cards`);
         if (container) {
-            container.innerHTML = ''; // 清空对应出牌区域
+            container.innerHTML = '';
         }
     });
-
-// 添加新的卡牌
+    // 添加新的卡牌
     cards.forEach((card, index) => {
         const cardElement = document.createElement('div');
         cardElement.className = 'played-card';
 
-        // 如果是底部玩家（自己）显示实际卡牌，否则显示"?"
-        cardElement.textContent = isBottomPlayer ? card : '?';
+        // 创建卡牌正面和背面
+        const cardFront = document.createElement('div');
+        cardFront.className = 'card-front';
+        cardFront.textContent = card;
+
+        const cardBack = document.createElement('div');
+        cardBack.className = 'card-back';
+        cardBack.textContent = '';
+
+        // 将正面和背面添加到卡牌元素中
+        cardElement.appendChild(cardFront);
+        cardElement.appendChild(cardBack);
+
+        // 如果是底部玩家的卡牌，直接显示正面
+        if (isBottomPlayer) {
+            cardElement.classList.add('flipped');
+        }
+
+        // 存储实际卡牌值供later使用
+        cardElement.dataset.cardValue = card;
 
         // 添加初始样式
         cardElement.style.opacity = '0';
@@ -220,7 +240,7 @@ function handlePlayedCard(cards, id) {
         }, index * 100);
     });
 }
-function handleShot(id,ShotRes){
+function handleShot(id, ShotRes) {
     // 找到对应玩家的元素
     let targetPlayer = null;
     Object.values(playerElements).forEach(({ element }) => {
@@ -228,20 +248,49 @@ function handleShot(id,ShotRes){
             targetPlayer = element;
         }
     });
+
     if (!targetPlayer) {
         console.error("未找到对应玩家的元素");
         return;
     }
-    if (ShotRes) {
-        // 如果开枪命中（结果为 true），将对应玩家图标变灰色
-        targetPlayer.classList.add("eliminated"); // 添加 "eliminated" 类（需定义样式）
-        // 显示窗口消息
-        alert("一发入魂！");
-    } else {
-        // 如果开枪未命中（结果为 false），仅显示窗口消息
-        alert("太幸运了！");
-    }
+
+    // 翻转所有玩家的出牌区域
+    Object.values(playerElements).forEach(({position}) => {
+        const container = document.getElementById(`${position}-played-cards`);
+        if (container) {
+            const cards = container.getElementsByClassName('played-card');
+            Array.from(cards).forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('flipped');
+                }, index * 200); // 每张卡延迟200ms翻转
+            });
+        }
+    });
+
+    // 等待卡牌翻转动画完成后再显示结果
+    setTimeout(() => {
+        if (ShotRes) {
+            targetPlayer.classList.add("eliminated");
+            remainingPlayers--;
+            document.getElementById('player-count').textContent = remainingPlayers;
+            showTemporaryMessage("一发入魂！");
+
+            if (remainingPlayers === 1) {
+                showTemporaryMessage("游戏结束！")
+                setTimeout(() => {
+                    sendGameOverMsg();
+                }
+                , 2000); // 2s方便玩家看清游戏结束信息
+
+            }
+
+        } else {
+            showTemporaryMessage("太幸运了！");
+
+        }
+    }, 1000); // 等待翻牌动画完成
 }
+
 
 function sendPlayedCardsMsg() {
     // 构造要发送的消息对象
@@ -272,6 +321,20 @@ function sendDoubtMsg() {
         console.error('WebSocket 连接未打开');
     }
 }
+function sendGameOverMsg(){
+    const message = {
+        type: 'GAMEOVER'
+    };
+
+    if (websocket.readyState === WebSocket.OPEN) {
+        websocket.send(JSON.stringify(message));
+        console.log('已发送游戏结束信息');
+    } else {
+        console.error('WebSocket 连接未打开');
+    }
+}
+
+
 
 // WebSocket连接关闭时，显示关闭信息
 websocket.onclose = function(event) {

@@ -2,7 +2,7 @@
 .currentCard {
     position: absolute;
     top: 45%;
-    left: 50%;
+    left: 40%;
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;

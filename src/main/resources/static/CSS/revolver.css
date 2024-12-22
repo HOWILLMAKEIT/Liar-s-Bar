@@ -1,0 +1,40 @@
+.revolver-container {
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.revolver {
+    width: 80%;
+    height: 80%;
+    transition: transform 0.3s ease;
+    stroke: #839c0e;    /* 深灰色描边 */
+    stroke-width: 2;
+    fill: #666;      /* 深灰色填充 */
+}
+
+
+
+/* 定义各个方向的旋转角度 */
+.point-to-top {
+    transform: translate(-50%, -50%) rotate(-90deg);
+}
+
+.point-to-right {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.point-to-bottom {
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.point-to-left {
+    transform: translate(-50%, -50%) rotate(180deg);
+}

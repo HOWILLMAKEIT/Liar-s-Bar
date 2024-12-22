@@ -1,6 +1,6 @@
 package com.liarsbar.liarbar.Service;
 
-import com.liarsbar.liarbar.Message.Msg_Client.PlayCard;
+import com.liarsbar.liarbar.Message.Msg_Client.PLAY;
 import com.liarsbar.liarbar.model.Card;
 import com.liarsbar.liarbar.model.Game;
 import com.liarsbar.liarbar.model.Player;
@@ -18,7 +18,7 @@ public class HandleMessageService {
         this.sendMessageService = sendMessageService;
     }
 
-    public void HandlePLAY(Game game, Player player, List<Card> cards, List<Player> roomPlayers, PlayCard playCard) {
+    public void HandlePLAY(Game game, Player player, List<Card> cards, List<Player> roomPlayers, PLAY playCard) {
         // 后端处理
         game.PLAY(player,cards);
         //发送消息到前端：1、cuurent player的改变 2、其他选手要要看到出牌
@@ -33,10 +33,11 @@ public class HandleMessageService {
         Player ShotPlayer = game.DOUBT(player);// 要开枪射自己的人
         boolean ShotRes = ShotPlayer.shothimself();
         Player PlayerNextRound ;
-        
         if(ShotPlayer.getisAlive())PlayerNextRound = ShotPlayer;
         else if(player.getisAlive()) PlayerNextRound = player;
         else PlayerNextRound = game.getGameState().getlastPlayer();
+
+        game.getGameState().NewRound(PlayerNextRound);
 
         // 发送消息到前端 1、谁开枪+结果
         for (Player eachPlayer : roomPlayers) {
@@ -44,6 +45,10 @@ public class HandleMessageService {
             sendMessageService.sendShot(eachSession,ShotRes,ShotPlayer.getSession().getId());
         }
         return PlayerNextRound;
+    }
+
+    public void HandleGAMEOVER(Game game, Player player, List<Player> roomPlayers) {
+
     }
 }
 
