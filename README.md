@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 2024 SCUT java大作业
 
 基于**Spring boot + WebSocket + JavaScript + html + CSS** 实现的网页游戏
@@ -17,3 +18,4 @@
 ### 玩家选择质疑：翻牌并且被淘汰玩家头像变灰
 
 ![image-20241222143347319](README.assets/image-20241222143347319.png)
+
