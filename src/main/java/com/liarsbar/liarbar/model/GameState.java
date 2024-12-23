@@ -17,6 +17,11 @@ public class GameState {
         this.players = players;
         this.currentCard = currentCard;
         this.currentPlayer = players.get(0);  // 第一位玩家开始
+        // 重置玩家状态
+        for(Player player : this.players){
+            player.newgun();
+            player.setisAlive(true);
+        }
         // 发牌
         dealCards(players,  5);
     }

@@ -15,7 +15,7 @@ public class Gun {
         int bulletPosition = random.nextInt(6);
         gun[bulletPosition] = 1; // 设置一个位置为1，代表子弹
         currentPosition = 0; // 从第一个位置开始
-//        // 测试使用，百分百中枪
+//         测试使用，百分百中枪
 //        gun = new int[6];
 //        Arrays.fill(gun, 1);
     }

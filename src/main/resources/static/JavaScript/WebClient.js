@@ -76,7 +76,6 @@ function handlePlayerIds(playerIds) {
         }
     });
 
-
     // 确保 playerIds 是有效数组，并且长度为 4
     if (!Array.isArray(playerIds) || playerIds.length !== 4) {
         console.error("收到的玩家 ID 数据无效:", playerIds);

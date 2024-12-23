@@ -50,6 +50,12 @@ public class Player {
     public void setHand(List<Card> cards){
         this.hand = cards;
     }
+    public void setisAlive(boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
+
+
     public void setRoomId(String roomId) {
         this.roomId = roomId;
     }
