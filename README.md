@@ -38,7 +38,7 @@ Steam游戏Liar‘s Bar https://www.liarsbar.net/
 如果您有任何问题或建议，请通过以下方式联系我：
 
 - GitHub Issues: https://github.com/HOWILLMAKEIT/Liar-s-Bar/issues
-- Email: [202330450471@mail.scut.edu.cn](mailto:202330450471@mail.scut.edu.cn)202330450471@mail.scut.edu.cn)
+- Email: [202330450471@mail.scut.edu.cn](mailto:202330450471@mail.scut.edu.cn)
 
 ------
 
